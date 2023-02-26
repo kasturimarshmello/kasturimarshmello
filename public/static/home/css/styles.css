@@ -11218,6 +11218,7 @@ header.masthead .site-heading .h1 {
 
 .post-preview > a {
   color: #212529;
+  height: 200px;
 }
 .post-preview > a:focus, .post-preview > a:hover {
   text-decoration: none;
@@ -11243,6 +11244,20 @@ header.masthead .site-heading .h1 {
 }
 @media (min-width: 992px) {
   .post-preview > a > .post-title {
-    font-size: 2.25rem;
+    font-size: 2rem;
   }
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.square {
+  height: 145px;
+  width: 145px;
+}
+
+.post-info{
+  max-height: 200px;
 }

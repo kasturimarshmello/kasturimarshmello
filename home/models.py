@@ -10,10 +10,11 @@ from django.dispatch import receiver
 class BlogModel(models.Model):
     title = models.CharField(max_length=1000)
     content = FroalaField(theme = 'dark', options={
-    'toolbarInline': True,
+    'toolbarInline': False,
     'charCounterCount': False,
     'toolbarVisibleWithoutSelection': True})
     slug = models.SlugField(max_length=1000, null=True, blank=True)
+    user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='blog')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

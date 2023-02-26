@@ -6,6 +6,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
+<input type="hidden" id="csrf" value="{{csrf_token}}">
 <header class="masthead" style="background-image: url('/static/home/assets/img/home-bg.jpg')">
     <div class="container justify-content-center pb-5">
             <div class="site-heading pb-5">
@@ -14,7 +15,7 @@
                     <!-- Login Form -->
                     <div class="login-info-box rounded">
                         <h2>Have an account?</h2>
-                        <p>Existing user</p>
+                        <p>Login using your credientials.</p>
                         <label id="label-register" for="log-reg-show">Login</label>
                         <input type="radio" name="active-log-panel" id="log-reg-show" checked="checked">
                     </div>
@@ -22,7 +23,7 @@
                     <!-- Register Option -->
                     <div class="register-info-box rounded">
                         <h2>Don't have an account?</h2>
-                        <p>New user</p>
+                        <p>Get started by registering yourself.</p>
                         <label id="label-login" for="log-login-show">Register</label>
                         <input type="radio" name="active-log-panel" id="log-login-show">
                     </div>
@@ -30,17 +31,19 @@
                     <div class="white-panel rounded">
                         <div class="login-show">
                             <h2>LOGIN</h2>
-                            <input class="rounded"  type="text" placeholder="Email">
-                            <input class="rounded" type="password" placeholder="Password">
-                            <input class="rounded btn-b"  type="button" value="Login">
+                            <div class="noshow" id="log-error-msg">Error msg</div>
+                            <input class="rounded" id="username_log" type="text" placeholder="User name">
+                            <input class="rounded" id="password_log" type="password" placeholder="Password">
+                            <input class="rounded btn-b"  type="button" onclick="login()" value="Login">
                             <a href="">Forgot password?</a>
                         </div>
                         <div class="register-show">
                             <h2>REGISTER</h2>
-                            <input class="rounded" type="text" placeholder="Email">
-                            <input class="rounded" type="password" placeholder="Password">
-                            <input class="rounded" type="password" placeholder="Confirm Password">
-                            <input class="rounded btn-b" type="button" value="Register">
+                            <div class="noshow" id="reg-error-msg">Error msg</div>
+                            <input class="rounded" id="username_reg" type="text" placeholder="Username">
+                            <input class="rounded" id="email_reg" type="email" placeholder="Email">
+                            <input class="rounded" id="password_reg" type="password" placeholder="Password">
+                            <input class="rounded btn-b" type="button" onclick="register()" value="Register">
                         </div>
                     </div>
                 </div>
@@ -49,4 +52,5 @@
 </header>
 
 <script src="{% static 'home/js/login.js' %}"></script>
+<script src="{% static 'home/js/main.js' %}"></script>
 {% endblock %}

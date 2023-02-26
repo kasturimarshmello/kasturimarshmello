@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url({% static 'home/assets/img/blog.jfif' %})">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <span class="meta">
+                                Posted by &#8209;<a href="#!"> {{ user.username }} </a>&#8209;
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+              <div class="col-md-12 col-lg-10 col-xl-10">
+                
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Created on</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for blog in blogs%}
+                      <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ blog.title }}</td>
+                        <td>{{ blog.created_at }}</td>
+                        <td>
+                            <a href="{% url 'update_blog' blog.slug %}" class="rounded btn btn-outline-success btn-sm">Edit</a>
+                            <a href="{% url 'delete_blog' blog.id %}" class="rounded btn btn-outline-danger btn-sm">Delete</a>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                <!-- Pager-->
+                <div class="d-flex justify-content-end mb-4 rounded"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- Footer-->
+{% endblock %}

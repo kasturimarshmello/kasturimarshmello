@@ -18,13 +18,14 @@ from django.urls import path, include
 from froala_editor import views
 from django.conf import settings
 from django.conf.urls.static import static
-from home.urls import home 
+# from home.urls import home 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
+    path('api/', include('home.urls_api')),
     path('froala_editor/', include('froala_editor.urls')),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     # path('login/', include('home.urls')),
 
 if settings.DEBUG:

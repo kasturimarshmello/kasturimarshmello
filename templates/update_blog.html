@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Page Header-->
+<header class="masthead" style="background-image: url({% static 'home/assets/img/add_blog2.png' %})">
+  </header>
+<div class="container">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-12">
+                <label for="title">Enter Title of Your Blog</label>
+                <input type="text" class="form-control" name="title" id="title" placeholder="Enter Title" value="{{blog_obj.title}}">
+            </div>
+
+            <div class="col-md-12">
+                {{form.media}}
+                {{form.as_p}}
+            </div>
+            <button type="submit" class="col-md-2 btn btn-primary mt-4 rounded">Update Blog</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
